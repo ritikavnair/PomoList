@@ -1,0 +1,51 @@
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+  transition: width 2s;
+}
+
+.left {
+  left: 0;
+  background-color: #111;
+  background-image: url(img/leftBkg.jpg);
+  background-size: 120% 100%
+}
+
+.right {
+  right: 0;
+  background-color: red;
+  background-image: url(img/rightBkg.jpg);
+  background-size:120% 108%;
+  color: whitesmoke;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+#left-panel:hover{
+  width: 53%;
+  
+}
+
+#left-panel:hover + #right-panel {
+  width: 47%
+}
+
+#right-panel:hover{
+  width: 53%;
+  
+}
+
+#right-panel:hover + #left-panel {
+  width: 47%
+}
