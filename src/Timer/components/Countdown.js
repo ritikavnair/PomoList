@@ -4,7 +4,7 @@ const Countdown = (props) =>{
     return (
         <div>
             <h2>
-            {`${props.currentTime.get('hours')} : ${props.currentTime.get('minutes')}: ${props.currentTime.get('seconds')} `}
+            {`${props.currentTime.get('minutes')}: ${props.currentTime.get('seconds')} `}
             </h2>
         </div>
 

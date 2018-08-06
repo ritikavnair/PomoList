@@ -7,13 +7,15 @@ import * as timerStates from '../timerStates';
 
 class Timer extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        console.log(props);
         this.state = {
             currentTime: moment.duration(25, 'minutes'),
-            initialTime: moment.duration(25, 'minutes'),
-            runState: timerStates.NOT_SET
-
+            initialTime: moment.duration(props.initialTime, 'minutes'),
+            runState: timerStates.NOT_SET,
+            taskList : [],
+            currentTask: {}
 
         }
         this.setInitialTime = this.setInitialTime.bind(this);
@@ -21,6 +23,21 @@ class Timer extends Component {
         this.reduceTime = this.reduceTime.bind(this);
         this.stopTimer = this.stopTimer.bind(this);
         this.finishTimer = this.finishTimer.bind(this);
+        this.updateInitialTime = this.updateInitialTime.bind(this);
+    }
+
+    componentDidUpdate(prevProps) {
+        console.log("Inside compdidUpdate");
+        // Typical usage (don't forget to compare props):
+        if (this.props.initialTime !== prevProps.initialTime) {
+            const newInitialTime =  moment.duration(parseInt(this.props.initialTime,10), 'minutes');
+            this.setState(
+                {
+                    initialTime: newInitialTime,
+                    currentTime: newInitialTime
+                }
+            );
+        }
     }
 
     setInitialTime(initTime) {
@@ -32,6 +49,16 @@ class Timer extends Component {
         );
 
     }
+
+
+    updateInitialTime(){                
+        //const mins =  document.getElementById('minutes').value;
+        if (this.props.initialTime >=0){
+            const newInitialTime =  moment.duration(parseInt(this.props.firstTaskTime,10), 'minutes');
+            this.setInitialTime(newInitialTime);
+        }        
+    }
+
 
     startTimer() {
         this.setState({
@@ -83,6 +110,8 @@ class Timer extends Component {
 
     }
     render() {
+        console.log("Inside timer js render");
+       
         return (
             <div >
                 <TimerButtons 
@@ -90,12 +119,7 @@ class Timer extends Component {
                 runState = {this.state.runState}
                 stopTimer = {this.stopTimer}/>
                 <Countdown currentTime={this.state.currentTime} />
-                {
-                    (this.state.runState !== timerStates.RUNNING) &&
-                    (<TimerInput
-                        initialTime={this.state.initialTime}
-                        setInitialTime={this.setInitialTime} />)
-                }
+               
             </div>);
     }
 }
