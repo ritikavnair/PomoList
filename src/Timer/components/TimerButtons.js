@@ -10,7 +10,7 @@ class TimerButtons extends Component {
     }
 
     getButton(){
-        if(this.props.runState === timerStates.NOT_SET ){
+        if(this.props.runState === timerStates.NOT_SET || this.props.runState === timerStates.PAUSED ){
             return (<button className="btn btn-primary" onClick={this.props.startTimer}>Start</button>);
         }
         else{

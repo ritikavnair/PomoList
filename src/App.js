@@ -11,17 +11,20 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      firstTaskTime : 0
+      firstTaskTime : 0,
+      tasksList : []
+
     }
 
     this.updateTimer= this.updateTimer.bind(this);
   }
 
 
-  updateTimer(time){
+  updateTimer(taskList){
     console.log("Inside updateTImer of app js");
+    console.log(taskList);
     this.setState({
-      firstTaskTime : time
+      tasksList : [...taskList]
     });
   }
 
@@ -43,7 +46,7 @@ class App extends Component {
             
               <div className="container h-100 align-items-center">
                 <div className="text-center timer mx-auto">
-                  <Timer initialTime = {this.state.firstTaskTime}/>
+                  <Timer tasksList = {this.state.tasksList}/>
                 </div>
               
             </div>

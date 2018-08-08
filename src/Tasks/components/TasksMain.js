@@ -17,13 +17,14 @@ class TasksMain extends Component {
     addNewTask(taskName, timeRequired){
         const newTaskId = this.state.taskList.length + 1;
         const newTask = {id:newTaskId, name: taskName, time:timeRequired }
-        
+        const newTaskList = [...this.state.taskList,newTask]
         this.setState({
-            taskList : [...this.state.taskList,newTask]
+            taskList : newTaskList
         });
-        if(newTaskId===1){
-            this.props.updateTimer(newTask.time);
-        }
+        // if(newTaskId===1){
+        //     this.props.updateTimer(newTask.time);
+        // }
+        this.props.updateTimer(newTaskList);
         
     }
 
