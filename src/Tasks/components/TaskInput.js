@@ -9,20 +9,26 @@ class TaskInput extends Component {
 
     addTask(){
 
-        const taskInput = document.getElementById("userInput");
-        if(taskInput){
-            this.props.addNewTask(taskInput.value,1);
+        const taskInput = document.getElementById("userTaskInput").value;
+        const timeInput = parseInt( document.getElementById("userTimeInput").value);
+      
+
+        if(taskInput && timeInput){
+            this.props.addNewTask(taskInput,timeInput);
         }  
-        document.getElementById("userInput").value = "";
+        document.getElementById("userTaskInput").value = "";
+        document.getElementById("userTimeInput").value = "";
         
     }
     
     render(){
+        //style={{display:'inline', float: 'left'}}
     return (
-        <div>
-            <input type="text" id="userInput" placeholder="eg: Respond to e-mails" />
-            <button onClick={this.addTask} id="add"> + </button>
-        </div>
+        <tr>
+            <td id="taskInputCol"><input type="text" id="userTaskInput" placeholder="eg: Respond to e-mails"  className="form-control"/></td>
+            <td id="timeInputCol"><input type="number" id="userTimeInput" placeholder="25"  className="form-control" min="1" max="60"/></td>
+            <td><button onClick={this.addTask} id="add" className="btn btn-default"> + </button></td>
+        </tr>
     );
 }
 }

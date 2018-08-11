@@ -35,7 +35,7 @@ class Timer extends Component {
         console.log(prevProps.tasksList);
         console.log(this.props.tasksList);
         const topPendingTask = this.getTopPendingTask(this.props.tasksList);
-        if ((this.props.tasksList.length != prevProps.tasksList.length) && topPendingTask && (this.state.runState === timerStates.NOT_SET)) {
+        if ((this.props.tasksList.length !== prevProps.tasksList.length) && topPendingTask && (this.state.runState === timerStates.NOT_SET)) {
   
            // const remainingTasks = this.props.tasksList.filter(x=> x.id !== topPendingTask.id);
             const newInitialTime = moment.duration(parseInt(topPendingTask.time, 10), 'minutes');
@@ -173,7 +173,7 @@ class Timer extends Component {
                     stopTimer={this.stopTimer} />
                 <Countdown currentTime={this.state.currentTime} />
                 {
-                    (Object.keys(this.state.currentTask).length != 0) &&
+                    (Object.keys(this.state.currentTask).length !== 0) &&
                     (
                         <h3>{this.state.currentTask.name}</h3>
                     )

@@ -1,18 +1,3 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: rgb(65, 4, 65);
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
 
 table{
   width: 100%;
@@ -30,9 +15,19 @@ table{
   
 }
 
+#taskInputCol{
+  width: 70%;
+}
+
+#timeInputCol{
+  width: 20%;
+  
+}
+
 input{
   width: 100%;
   border-radius: 5px;
   border: 1px solid lightgray;
   background-color: rgb(252, 252, 253)
 }
+

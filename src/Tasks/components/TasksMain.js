@@ -33,8 +33,12 @@ class TasksMain extends Component {
         return (
             
             <div>
+                 <table>
+                     <thead>
                 <TaskInput addNewTask={this.addNewTask}/>
+                </thead>
                 <TaskList taskList = {this.state.taskList}/>
+                </table>
             </div>
         );
     }
