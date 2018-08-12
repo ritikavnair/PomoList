@@ -130,12 +130,11 @@ class Timer extends Component {
     }
 
     startNextTaskTimer(remainingTasks){
+
+        window.alert("Time for task "+ this.state.currentTask.name + " is over!");
         const topPendingTask = this.getTopPendingTask(remainingTasks);
         
-        console.log("Inside startnexttasktimer");
-        
-        console.log(topPendingTask);
-        console.log(remainingTasks);
+       
             this.setState({
                 currentTask: topPendingTask,        
                 pendingTasks: remainingTasks,

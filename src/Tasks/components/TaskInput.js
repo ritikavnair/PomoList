@@ -18,7 +18,7 @@ class TaskInput extends Component {
         }  
         document.getElementById("userTaskInput").value = "";
         document.getElementById("userTimeInput").value = "";
-        
+        document.getElementById("userTaskInput").focus();
     }
     
     render(){
