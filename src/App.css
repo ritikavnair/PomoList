@@ -15,13 +15,27 @@ table{
   
 }
 
+.taskInput input{
+  
+  background-color: rgba(255, 255, 255, 0.36)
+}
+
+.timeInput input{
+  background-color: rgba(255, 255, 255, 0.36)
+  
+}
+
 #taskInputCol{
-  width: 70%;
+  width: 60%;
 }
 
 #timeInputCol{
   width: 20%;
   
+}
+
+#taskStatusIconCol{
+  width: 20%;
 }
 
 input{
@@ -31,8 +45,23 @@ input{
   background-color: rgb(252, 252, 253)
 }
 
+.deleteButton{
+ 
+  background-color: rgb(252, 252, 253)
+}
+
 #countdown h1{
   height: 100px;
   width : 200px;
   font-size: 60px;
 }
+
+delIcon{
+  height: 10%;
+}
+
+.material-icons.md-18 {
+  font-size: 18px !important;
+  height: 18px !important;
+  width: 18px !important;
+  }

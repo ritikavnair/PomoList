@@ -14,11 +14,13 @@ class App extends Component {
     this.state = {
       firstTaskTime : 0,
       tasksList : [],
-      runState: timerStates.NOT_SET
+      runState: timerStates.NOT_SET,
+      taskToCheck:null
     }
 
     this.updateTimer= this.updateTimer.bind(this);
     this.updateTimerState= this.updateTimerState.bind(this);
+    this.setTaskToCheck= this.setTaskToCheck.bind(this);
   }
 
 
@@ -35,6 +37,12 @@ class App extends Component {
     });
   }
 
+  setTaskToCheck(task){
+    this.setState({
+      taskToCheck: task
+    });
+  }
+
   render() {
     
     return (
@@ -43,7 +51,7 @@ class App extends Component {
           <div className="centered">
             <h2>Tasks</h2>
             
-              <TasksMain updateTimer={this.updateTimer} timerRunState = {this.state.runState} />
+              <TasksMain updateTimer={this.updateTimer} timerRunState = {this.state.runState} taskToCheck={this.state.taskToCheck}/>
             
           </div>
         </div>
@@ -53,7 +61,7 @@ class App extends Component {
             
               <div className="container align-items-center">
                 <div className="text-center timer mx-auto">
-                  <Timer tasksList = {this.state.tasksList}  updateTimerState={ this.updateTimerState}/>
+                  <Timer tasksList = {this.state.tasksList}  updateTimerState={ this.updateTimerState} setTaskToCheck={this.setTaskToCheck}/>
                 </div>
               
             </div>

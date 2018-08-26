@@ -106,6 +106,8 @@ class Timer extends Component {
     reduceTime() {
         
         if (this.state.currentTime.get('hours') === 0 && this.state.currentTime.get('minutes') === 0 && this.state.currentTime.get('seconds') === 0) {
+            this.props.setTaskToCheck(this.state.currentTask);
+            
             // remove current task from pending list.
             const remainingTasks = this.state.pendingTasks.filter(x=> x.id !== this.state.currentTask.id);
             
@@ -136,6 +138,7 @@ class Timer extends Component {
         
        
             this.setState({
+                
                 currentTask: topPendingTask,        
                 pendingTasks: remainingTasks,
                 currentTime: moment.duration(parseInt(topPendingTask.time, 10), 'minutes'),
@@ -149,6 +152,7 @@ class Timer extends Component {
             clearInterval(this.state.timer);
         }
         this.setState({
+            
             runState: timerStates.ALL_DONE,
             timer: null,
             pendingTasks: []

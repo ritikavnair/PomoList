@@ -46,7 +46,7 @@ class TasksMain extends Component {
                      <thead>
                 <TaskInput addNewTask={this.addNewTask} disabled= {disabled}/>
                 </thead>
-                <TaskList taskList = {this.state.taskList} disabled= {disabled}/>
+                <TaskList taskList = {this.state.taskList} disabled= {disabled} taskToCheck={this.props.taskToCheck}/>
                 </table>
             </div>
         );
