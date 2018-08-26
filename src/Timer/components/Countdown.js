@@ -7,10 +7,10 @@ const leftPad = (value) => {
 }
 const Countdown = (props) =>{
     return (
-        <div>
-            <h2>
-            {`${leftPad(props.currentTime.get('minutes'))}: ${leftPad(props.currentTime.get('seconds'))} `}
-            </h2>
+        <div id = "countdown">
+            <h1>
+            {`${leftPad(props.currentTime.get('minutes'))} : ${leftPad(props.currentTime.get('seconds'))} `}
+            </h1>
         </div>
 
     );

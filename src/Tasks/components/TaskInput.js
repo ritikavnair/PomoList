@@ -23,11 +23,13 @@ class TaskInput extends Component {
     
     render(){
         //style={{display:'inline', float: 'left'}}
+        console.log("Inside taskInput render");
+        console.log(this.props.disabled);
     return (
         <tr>
-            <td id="taskInputCol"><input type="text" id="userTaskInput" placeholder="eg: Respond to e-mails"  className="form-control"/></td>
-            <td id="timeInputCol"><input type="number" id="userTimeInput" placeholder="25"  className="form-control" min="1" max="60"/></td>
-            <td><button onClick={this.addTask} id="add" className="btn btn-default"> + </button></td>
+            <td id="taskInputCol"><input type="text" id="userTaskInput" placeholder="eg: Respond to e-mails"  className="form-control" disabled={this.props.disabled}/></td>
+            <td id="timeInputCol"><input type="number" id="userTimeInput" placeholder="25"  className="form-control" min="1" max="60" disabled={this.props.disabled}/></td>
+            <td><button onClick={this.addTask} id="add" className="btn btn-default" disabled={this.props.disabled}> + </button></td>
         </tr>
     );
 }

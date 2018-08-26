@@ -31,3 +31,8 @@ input{
   background-color: rgb(252, 252, 253)
 }
 
+#countdown h1{
+  height: 100px;
+  width : 200px;
+  font-size: 60px;
+}

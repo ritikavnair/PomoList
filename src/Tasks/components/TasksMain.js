@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TaskInput from './TaskInput';
 import TaskList from './TaskList';
+import * as timerStates from '../../Timer/timerStates';
 
 
 class TasksMain extends Component {
@@ -31,15 +32,21 @@ class TasksMain extends Component {
     }
 
     render() {
-        
+        var disabled = true;
+        if(this.props.timerRunState===timerStates.NOT_SET){
+            disabled = false;
+        }
+        console.log("Inside TasksMainrender");
+        console.log(this.props.timerRunState);
+        console.log(disabled);
         return (
             
             <div>
                  <table>
                      <thead>
-                <TaskInput addNewTask={this.addNewTask}/>
+                <TaskInput addNewTask={this.addNewTask} disabled= {disabled}/>
                 </thead>
-                <TaskList taskList = {this.state.taskList}/>
+                <TaskList taskList = {this.state.taskList} disabled= {disabled}/>
                 </table>
             </div>
         );

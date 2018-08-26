@@ -9,9 +9,9 @@ class Timer extends Component {
 
     constructor(props) {
         super(props);
-        console.log(props);
+        
         this.state = {
-            currentTime: moment.duration(25, 'minutes'),
+            currentTime: moment.duration(0, 'minutes'),
             initialTime: moment.duration(props.initialTime, 'minutes'),
             runState: timerStates.NOT_SET,
             taskList: [],
@@ -32,8 +32,7 @@ class Timer extends Component {
 
     componentDidUpdate(prevProps) {
         console.log("Inside compdidUpdate");
-        console.log(prevProps.tasksList);
-        console.log(this.props.tasksList);
+        
         const topPendingTask = this.getTopPendingTask(this.props.tasksList);
         if ((this.props.tasksList.length !== prevProps.tasksList.length) && topPendingTask && (this.state.runState === timerStates.NOT_SET)) {
   
@@ -89,6 +88,7 @@ class Timer extends Component {
             timer: setInterval(this.reduceTime, 1000),
             
         });
+        this.props.updateTimerState(timerStates.RUNNING);
     }
 
     stopTimer() {
@@ -100,15 +100,15 @@ class Timer extends Component {
             timer: null,
 
         });
+        this.props.updateTimerState(timerStates.PAUSED);
     }
 
     reduceTime() {
-        console.log(this.state);
+        
         if (this.state.currentTime.get('hours') === 0 && this.state.currentTime.get('minutes') === 0 && this.state.currentTime.get('seconds') === 0) {
             // remove current task from pending list.
             const remainingTasks = this.state.pendingTasks.filter(x=> x.id !== this.state.currentTask.id);
-            console.log("Inside reduceTime");
-            console.log(remainingTasks);
+            
            
             if(remainingTasks.length ===0){
                 this.finishTimer();
@@ -158,6 +158,7 @@ class Timer extends Component {
         this.setState({
             runState: timerStates.NOT_SET
         });
+        this.props.updateTimerState(timerStates.NOT_SET);
 
 
     }
@@ -166,10 +167,7 @@ class Timer extends Component {
 
         return (
             <div >
-                <TimerButtons
-                    startTimer={this.startTimer}
-                    runState={this.state.runState}
-                    stopTimer={this.stopTimer} />
+                
                 <Countdown currentTime={this.state.currentTime} />
                 {
                     (Object.keys(this.state.currentTask).length !== 0) &&
@@ -177,6 +175,10 @@ class Timer extends Component {
                         <h3>{this.state.currentTask.name}</h3>
                     )
                 }
+                <TimerButtons
+                    startTimer={this.startTimer}
+                    runState={this.state.runState}
+                    stopTimer={this.stopTimer} />
                 
                 
             </div>);

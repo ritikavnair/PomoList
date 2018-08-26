@@ -14,7 +14,7 @@ class TaskList extends Component {
              <td className="taskInput"><input value={task.name} readOnly/></td>
                 <td className="timeInput"><input type="number" min="1" max="60" value ={task.time}  readOnly /></td>
                
-                <td><button><i className="material-icons">delete</i></button></td>
+                <td><button disabled={this.props.disabled}><i className="material-icons" >delete</i></button></td>
             </tr>
             );
     }

@@ -14,7 +14,7 @@ class TimerButtons extends Component {
             return (<button className="btn btn-primary" onClick={this.props.startTimer}>Start</button>);
         }
         else{
-            return (<button className="btn btn-danger" onClick={this.props.stopTimer}>Stop</button>);
+            return (<button className="btn btn-danger" onClick={this.props.stopTimer}>Pause</button>);
         }
 
     }
