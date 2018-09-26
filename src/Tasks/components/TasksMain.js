@@ -16,9 +16,7 @@ class TasksMain extends Component {
         if(this.props.timerRunState===timerStates.NOT_SET){
             disabled = false;
         }
-        console.log("Inside TasksMainrender");
-        console.log(this.props.timerRunState);
-        console.log(disabled);
+        
         return (
             
             <div>

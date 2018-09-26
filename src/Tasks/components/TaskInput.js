@@ -11,9 +11,7 @@ class TaskInput extends Component {
 
         const taskInput = document.getElementById("userTaskInput").value;
         const timeInput = parseInt( document.getElementById("userTimeInput").value);
-       console.log("Inside addTask");
-       console.log(this.props);
-
+       
         if(taskInput && timeInput){
             this.props.addNewTask(taskInput,timeInput);
         }  
@@ -23,9 +21,7 @@ class TaskInput extends Component {
     }
     
     render(){
-        //style={{display:'inline', float: 'left'}}
-        console.log("Inside taskInput render");
-        console.log(this.props.disabled);
+               
     return (
         <tr>
             <td id="taskStatusIconCol" ></td>

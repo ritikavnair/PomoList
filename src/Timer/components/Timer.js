@@ -33,7 +33,7 @@ class Timer extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        console.log("Inside compdidUpdate");
+        
         
         const topPendingTask = this.getTopPendingTask(this.props.tasksList);
         if ((this.props.tasksList.length !== prevProps.tasksList.length) && topPendingTask && (this.state.runState === timerStates.NOT_SET)) {
@@ -116,7 +116,7 @@ class Timer extends Component {
 
     startNextTaskTimer(remainingTasks){
 
-        window.alert("Time for task "+ this.state.currentTask.name + " is over!");
+        alert("Time for task "+ this.state.currentTask.name + " is over!");
         const topPendingTask = this.getTopPendingTask(remainingTasks);
         
        
@@ -141,7 +141,7 @@ class Timer extends Component {
             pendingTasks: []
 
         });
-        window.alert("Your time is over")
+        window.alert("Time up!")
         this.setState({
             runState: timerStates.NOT_SET
         });
@@ -151,12 +151,12 @@ class Timer extends Component {
     }
 
     clearAll(){
-        console.log("Inside clearall");
+        
         this.clearTimer();
         this.props.clearAllTasks();
     }
     clearTimer(){
-        console.log("Inside cleartimer");
+        
         if (this.state.timer) {
             clearInterval(this.state.timer);
         }
@@ -174,8 +174,7 @@ class Timer extends Component {
     }
 
     render() {
-        console.log("Inside timer js render");
-
+        
         return (
             <div >
                 

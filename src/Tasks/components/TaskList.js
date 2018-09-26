@@ -20,7 +20,7 @@ class TaskList extends Component {
         }
     }
     renderTask(task) {
-    console.log(task.id);
+    
         return (
             <tr key={task.id} id={task.id}>
                 <td className="taskStatusIcon"> </td>
@@ -34,9 +34,7 @@ class TaskList extends Component {
 
 
     render() {
-        console.log("inside tasklist render");
-        console.log(this.props.taskToCheck);
-        console.log(this.props.taskList);
+        
         return (
 
             <tbody>
