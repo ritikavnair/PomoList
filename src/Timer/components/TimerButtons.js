@@ -23,6 +23,7 @@ class TimerButtons extends Component {
         return (
             <div>                
                {this.getButton()}
+               <button className="btn btn-dark clearButton" onClick={this.props.clearAll}>Clear All</button>
             </div>
         );
     }

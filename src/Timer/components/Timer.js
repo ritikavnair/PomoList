@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Countdown from './Countdown';
-import TimerInput from './TimerInput';
 import TimerButtons from './TimerButtons';
 import moment from 'moment';
 import * as timerStates from '../timerStates';
@@ -17,17 +16,20 @@ class Timer extends Component {
             taskList: [],
             currentTask: {},
             pendingTasks : [],
-            elapsedTasks :[]
+            elapsedTasks :[],
+            timer: null
 
         }
-        this.setInitialTime = this.setInitialTime.bind(this);
+       
         this.startTimer = this.startTimer.bind(this);
         this.reduceTime = this.reduceTime.bind(this);
         this.stopTimer = this.stopTimer.bind(this);
         this.finishTimer = this.finishTimer.bind(this);
-        this.updateInitialTime = this.updateInitialTime.bind(this);
+       
         this.startNextTaskTimer = this.startNextTaskTimer.bind(this);
         this.getTopPendingTask = this.getTopPendingTask.bind(this);
+        this.clearAll = this.clearAll.bind(this);
+        this.clearTimer = this.clearTimer.bind(this);
     }
 
     componentDidUpdate(prevProps) {
@@ -36,7 +38,6 @@ class Timer extends Component {
         const topPendingTask = this.getTopPendingTask(this.props.tasksList);
         if ((this.props.tasksList.length !== prevProps.tasksList.length) && topPendingTask && (this.state.runState === timerStates.NOT_SET)) {
   
-           // const remainingTasks = this.props.tasksList.filter(x=> x.id !== topPendingTask.id);
             const newInitialTime = moment.duration(parseInt(topPendingTask.time, 10), 'minutes');
 
             this.setState(
@@ -53,25 +54,7 @@ class Timer extends Component {
       
     }
 
-    setInitialTime(initTime) {
-        this.setState(
-            {
-                initialTime: initTime,
-                currentTime: initTime
-            }
-        );
-
-    }
-
-
-    updateInitialTime() {
-        //const mins =  document.getElementById('minutes').value;
-        if (this.props.initialTime >= 0) {
-            const newInitialTime = moment.duration(parseInt(this.props.firstTaskTime, 10), 'minutes');
-            this.setInitialTime(newInitialTime);
-        }
-    }
-
+  
     getTopPendingTask(currentTaskList){
         if(currentTaskList.length > 0){
             const firstTaskId = currentTaskList.reduce((min, o) => o.id < min ? o.id : min, currentTaskList[0].id);
@@ -166,6 +149,30 @@ class Timer extends Component {
 
 
     }
+
+    clearAll(){
+        console.log("Inside clearall");
+        this.clearTimer();
+        this.props.clearAllTasks();
+    }
+    clearTimer(){
+        console.log("Inside cleartimer");
+        if (this.state.timer) {
+            clearInterval(this.state.timer);
+        }
+        this.setState ({
+            currentTime: moment.duration(0, 'minutes'),
+            initialTime: moment.duration(this.props.initialTime, 'minutes'),
+            runState: timerStates.NOT_SET,
+            taskList: [],
+            currentTask: {},
+            pendingTasks : [],
+            elapsedTasks :[],
+            timer : null
+
+        });
+    }
+
     render() {
         console.log("Inside timer js render");
 
@@ -182,7 +189,8 @@ class Timer extends Component {
                 <TimerButtons
                     startTimer={this.startTimer}
                     runState={this.state.runState}
-                    stopTimer={this.stopTimer} />
+                    stopTimer={this.stopTimer}
+                    clearAll = {this.clearAll}/>
                 
                 
             </div>);

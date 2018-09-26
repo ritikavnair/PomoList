@@ -36,6 +36,7 @@ class TaskList extends Component {
     render() {
         console.log("inside tasklist render");
         console.log(this.props.taskToCheck);
+        console.log(this.props.taskList);
         return (
 
             <tbody>

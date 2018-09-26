@@ -11,7 +11,8 @@ class TaskInput extends Component {
 
         const taskInput = document.getElementById("userTaskInput").value;
         const timeInput = parseInt( document.getElementById("userTimeInput").value);
-      
+       console.log("Inside addTask");
+       console.log(this.props);
 
         if(taskInput && timeInput){
             this.props.addNewTask(taskInput,timeInput);

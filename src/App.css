@@ -65,3 +65,7 @@ delIcon{
   height: 18px !important;
   width: 18px !important;
   }
+
+.clearButton {
+  margin: 10px;
+}
